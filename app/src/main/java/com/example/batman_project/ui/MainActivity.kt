@@ -1,7 +1,8 @@
-package com.example.batman_project
+package com.example.batman_project.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.batman_project.R
 
 class MainActivity : AppCompatActivity() {
 

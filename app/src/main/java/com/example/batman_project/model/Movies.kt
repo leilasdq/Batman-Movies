@@ -1,4 +1,4 @@
-package com.example.batman_project
+package com.example.batman_project.model
 
 data class Movies(
     val Response: String,
