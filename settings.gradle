@@ -1,0 +1,2 @@
+rootProject.name='Batman_Project'
+include ':app'
