@@ -22,6 +22,18 @@ class MovieListFragment : Fragment() {
         // Inflate the layout for this fragment
         mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_movie_list, container, false)
 
+        val adapter = MoviesListAdapter()
+        val fakeItems = ArrayList<Search>()
+        for (i in 1..10){
+            fakeItems.add(
+                Search(
+                    "https://m.media-amazon.com/images/M/MV5BZmUwNGU2ZmItMmRiNC00MjhlLTg5YWUtODMyNzkxODYzMmZlXkEyXkFqcGdeQXVyNTIzOTk5ODM@._V1_SX300.jpg",
+                    "Movie Name$i", "MOVIE", "200$i", "test$i"))
+        }
+        adapter.submitList(fakeItems)
+        mBinding.moviesRecycle.layoutManager = GridLayoutManager(activity, 2)
+        mBinding.moviesRecycle.adapter = adapter
+
         return mBinding.root
     }
 
