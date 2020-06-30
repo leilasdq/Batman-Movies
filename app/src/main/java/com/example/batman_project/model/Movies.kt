@@ -1,7 +1,7 @@
 package com.example.batman_project.model
 
 data class Movies(
-    val Response: String,
-    val Search: List<Search>,
-    val totalResults: String
+    var Response: String,
+    var Search: List<Search>,
+    var totalResults: String
 )

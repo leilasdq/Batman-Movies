@@ -6,11 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.batman_project.R
 import com.example.batman_project.adapter.MoviesListAdapter
 import com.example.batman_project.databinding.FragmentMovieListBinding
 import com.example.batman_project.model.Search
+import com.example.batman_project.network.FetchItems
 
 /**
  * A simple [Fragment] subclass.
@@ -27,16 +29,10 @@ class MovieListFragment : Fragment() {
             R.layout.fragment_movie_list, container, false)
 
         val adapter = MoviesListAdapter()
-        val fakeItems = ArrayList<Search>()
-        for (i in 1..10){
-            fakeItems.add(
-                Search(
-                    "https://m.media-amazon.com/images/M/MV5BZmUwNGU2ZmItMmRiNC00MjhlLTg5YWUtODMyNzkxODYzMmZlXkEyXkFqcGdeQXVyNTIzOTk5ODM@._V1_SX300.jpg",
-                    "Movie Name$i", "MOVIE", "200$i", "test$i"
-                )
-            )
-        }
-        adapter.submitList(fakeItems)
+        FetchItems.getAllMovies().observe(viewLifecycleOwner, Observer {
+            adapter.submitList(it)
+        })
+
         mBinding.moviesRecycle.layoutManager = GridLayoutManager(activity, 2)
         mBinding.moviesRecycle.adapter = adapter
 

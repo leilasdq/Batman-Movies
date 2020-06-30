@@ -1,9 +1,9 @@
 package com.example.batman_project.model
 
 data class Search(
-    val Poster: String,
-    val Title: String,
-    val Type: String,
-    val Year: String,
-    val imdbID: String
+    var Poster: String,
+    var Title: String,
+    var Type: String,
+    var Year: String,
+    var imdbID: String
 )
