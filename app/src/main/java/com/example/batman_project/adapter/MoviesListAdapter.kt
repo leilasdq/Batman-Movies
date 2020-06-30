@@ -41,7 +41,7 @@ class MoviesListAdapter() : ListAdapter<Search, MoviesListAdapter.MoviesViewHold
         fun bind(search: Search){
             binding.movieTxt.text = search.Title
             binding.movieImg.load(search.Poster) {
-                crossfade(true)
+                crossfade(false)
                 scale(Scale.FILL)
                 transformations(RoundedCornersTransformation(4f))
             }

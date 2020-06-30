@@ -61,6 +61,7 @@ object FetchItems {
 
     fun getSpecificMovie(midbId: String): MutableLiveData<Detail>{
         val editedQuery = mQueries
+        editedQuery.remove("s")
         editedQuery["i"] = midbId
 
         val call = mApiService.getDetail(editedQuery)
