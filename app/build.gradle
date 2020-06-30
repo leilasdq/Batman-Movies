@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: "androidx.navigation.safeargs"
 
 android {
     compileSdkVersion 29
@@ -23,7 +24,7 @@ android {
         }
     }
 
-    dataBinding{
+    dataBinding {
         enabled = true
     }
 
@@ -52,4 +53,6 @@ dependencies {
 
     //coil dependency
     implementation("io.coil-kt:coil:0.7.0")
+
+    implementation 'com.github.siyamed:android-shape-imageview:0.9.3@aar'
 }
