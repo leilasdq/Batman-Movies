@@ -8,10 +8,11 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.api.load
 import coil.size.Scale
 import coil.transform.RoundedCornersTransformation
+import com.example.batman_project.MoviesViewModel
 import com.example.batman_project.model.Search
 import com.example.batman_project.databinding.ListItemsBinding
 
-class MoviesListAdapter() : ListAdapter<Search, MoviesListAdapter.MoviesViewHolder>(
+class MoviesListAdapter(val vm: MoviesViewModel) : ListAdapter<Search, MoviesListAdapter.MoviesViewHolder>(
     MoviesDiffUtil()
 ) {
 
@@ -22,7 +23,7 @@ class MoviesListAdapter() : ListAdapter<Search, MoviesListAdapter.MoviesViewHold
     }
 
     override fun onBindViewHolder(holder: MoviesViewHolder, position: Int) {
-        holder.bind(getItem(position))
+        holder.bind(getItem(position), vm)
     }
 
     class MoviesViewHolder private constructor(private val binding: ListItemsBinding) : RecyclerView.ViewHolder(binding.root) {
@@ -38,7 +39,9 @@ class MoviesListAdapter() : ListAdapter<Search, MoviesListAdapter.MoviesViewHold
             }
         }
 
-        fun bind(search: Search){
+        fun bind(search: Search, vm: MoviesViewModel){
+            binding.search = search
+            binding.viewModel = vm
             binding.movieTxt.text = search.Title
             binding.movieImg.load(search.Poster) {
                 crossfade(false)

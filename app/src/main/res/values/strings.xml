@@ -5,4 +5,10 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="type_txt">Type</string>
     <string name="year_txt">Year</string>
+    <string name="country_txt">Country</string>
+    <string name="length_txt">Length</string>
+    <string name="plot_tct">Plot:</string>
+    <string name="actors_txt">Actors:</string>
+    <string name="director_txt">Director:</string>
+    <string name="writers">Writers:</string>
 </resources>
