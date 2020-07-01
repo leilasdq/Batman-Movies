@@ -3,24 +3,23 @@ package com.example.batman_project
 import android.app.Application
 import android.content.Context
 import android.net.ConnectivityManager
+import com.example.batman_project.database.ObjectBox
 
 
 class MoviesApplication: Application() {
 
-    //private lateinit var instance: MoviesApplication
-
     override fun onCreate() {
         super.onCreate()
         instance = this
+        ObjectBox.init(this)
     }
 
     companion object {
         lateinit var instance: MoviesApplication
-            private set
     }
 
     fun hasNetwork(): Boolean {
-        return instance.isNetworkConnected()
+        return isNetworkConnected()
     }
 
     private fun isNetworkConnected(): Boolean {

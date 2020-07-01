@@ -1,6 +1,11 @@
 package com.example.batman_project.model
 
+import io.objectbox.annotation.Id
+import io.objectbox.annotation.Index
+import io.objectbox.annotation.Unique
+
 data class Detail(
+    @Id var id: Long = 0,
     val Actors: String,
     val Awards: String,
     val BoxOffice: String,
@@ -23,7 +28,7 @@ data class Detail(
     val Website: String,
     val Writer: String,
     val Year: String,
-    val imdbID: String,
+    @Index @Unique val imdbID: String,
     val imdbRating: String,
     val imdbVotes: String
 )

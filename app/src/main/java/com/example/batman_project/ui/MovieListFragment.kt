@@ -43,6 +43,7 @@ class MovieListFragment : Fragment() {
         mViewModel.getAllMovies().observe(viewLifecycleOwner, Observer {
             if(it!=null) {
                 mAdapter.submitList(it)
+                mViewModel.cacheItems(it)
             }
         })
 

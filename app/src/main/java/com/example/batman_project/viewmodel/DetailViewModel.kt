@@ -3,6 +3,8 @@ package com.example.batman_project.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.batman_project.MoviesApplication
+import com.example.batman_project.database.DatabaseRepository
 import com.example.batman_project.model.Detail
 import com.example.batman_project.network.FetchItems
 
@@ -20,7 +22,11 @@ class DetailViewModel: ViewModel() {
     }
 
     fun getSpecificMovie(id: String): LiveData<Detail>{
-        return FetchItems.getSpecificMovie(id)
+        return if (MoviesApplication.instance.hasNetwork()) {
+            FetchItems.getSpecificMovie(id)
+        } else {
+            getDetailFromDatabase(id)
+        }
     }
 
     fun onShareClicked(){
@@ -37,5 +43,13 @@ class DetailViewModel: ViewModel() {
 
     fun onPlayFinished(){
         isPlayClicked.value = false
+    }
+
+    fun getDetailFromDatabase(id: String): MutableLiveData<Detail> {
+        return DatabaseRepository.getSpecificMovie(id)
+    }
+
+    fun putMovieToDatabase(detail: Detail){
+        DatabaseRepository.putSpecificMovieDetail(detail)
     }
 }
