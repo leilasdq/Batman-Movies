@@ -27,6 +27,7 @@ object DatabaseRepository {
     }
 
     fun removeAllMovies() {
+        if(movieBox.all.size != 0)
         movieBox.removeAll()
     }
 
@@ -46,7 +47,11 @@ object DatabaseRepository {
     fun putSpecificMovieDetail(detail: Detail) {
         val list = detailBox.all
         for (i in list) {
-            if (detail.imdbID != i.imdbID) {
+            if(list.size!=0) {
+                if (detail.imdbID != i.imdbID) {
+                    detailBox.put(detail)
+                }
+            } else {
                 detailBox.put(detail)
             }
         }
