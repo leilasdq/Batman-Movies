@@ -9,7 +9,7 @@
             type="com.example.batman_project.model.Search" />
         <variable
             name="viewModel"
-            type="com.example.batman_project.MoviesViewModel" />
+            type="com.example.batman_project.viewmodel.MoviesViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

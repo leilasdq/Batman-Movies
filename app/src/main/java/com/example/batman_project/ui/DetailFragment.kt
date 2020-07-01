@@ -12,12 +12,11 @@ import androidx.lifecycle.ViewModelProvider
 import coil.api.load
 import coil.size.Scale
 import coil.transform.RoundedCornersTransformation
-import com.example.batman_project.DetailViewModel
+import com.example.batman_project.viewmodel.DetailViewModel
 
 import com.example.batman_project.R
 import com.example.batman_project.databinding.FragmentDetailBinding
 import com.example.batman_project.model.Detail
-import com.example.batman_project.network.FetchItems
 import com.google.android.material.snackbar.Snackbar
 
 /**
@@ -37,7 +36,8 @@ class DetailFragment : Fragment() {
         val args = DetailFragmentArgs.fromBundle(requireArguments())
 
         val application = requireNotNull(value = this.activity).application
-        mViewModel = ViewModelProvider.AndroidViewModelFactory(application).create(DetailViewModel::class.java)
+        mViewModel = ViewModelProvider.AndroidViewModelFactory(application).create(
+            DetailViewModel::class.java)
         mBinding.viewModel = mViewModel
 
         mViewModel.getSpecificMovie(args.imdbId).observe(viewLifecycleOwner, Observer {

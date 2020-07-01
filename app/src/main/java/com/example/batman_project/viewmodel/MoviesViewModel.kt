@@ -1,4 +1,4 @@
-package com.example.batman_project
+package com.example.batman_project.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -21,9 +21,10 @@ class MoviesViewModel: ViewModel() {
 
     fun onItemClicked(search: Search){
         onSearch.value = search
+        onSearch.value = null
     }
 
     fun navigateFinished(){
-        onSearch.value = null
+        getAllMovies()
     }
 }

@@ -1,4 +1,4 @@
-package com.example.batman_project
+package com.example.batman_project.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

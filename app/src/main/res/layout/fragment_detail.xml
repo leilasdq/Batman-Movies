@@ -10,7 +10,7 @@
             type="com.example.batman_project.model.Detail" />
         <variable
             name="viewModel"
-            type="com.example.batman_project.DetailViewModel" />
+            type="com.example.batman_project.viewmodel.DetailViewModel" />
     </data>
 
     <androidx.core.widget.NestedScrollView

@@ -10,7 +10,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
-import com.example.batman_project.MoviesViewModel
+import com.example.batman_project.viewmodel.MoviesViewModel
 import com.example.batman_project.R
 import com.example.batman_project.adapter.MoviesListAdapter
 import com.example.batman_project.databinding.FragmentMovieListBinding
@@ -36,11 +36,14 @@ class MovieListFragment : Fragment() {
         //(activity as MainActivity).supportActionBar?.setIcon(R.drawable.logo)
 
         val application = requireNotNull(value = this.activity).application
-        mViewModel = ViewModelProvider.AndroidViewModelFactory(application).create(MoviesViewModel::class.java)
+        mViewModel = ViewModelProvider.AndroidViewModelFactory(application).create(
+            MoviesViewModel::class.java)
 
         mAdapter = MoviesListAdapter(mViewModel)
         mViewModel.getAllMovies().observe(viewLifecycleOwner, Observer {
-            mAdapter.submitList(it)
+            if(it!=null) {
+                mAdapter.submitList(it)
+            }
         })
 
         mViewModel.search.observe(viewLifecycleOwner, Observer {
@@ -50,6 +53,7 @@ class MovieListFragment : Fragment() {
                     this.findNavController().navigate(
                         MovieListFragmentDirections.actionMovieListFragmentToDetailFragment(it.imdbID)
                     )
+                    mViewModel.navigateFinished()
                 }
             }
         })

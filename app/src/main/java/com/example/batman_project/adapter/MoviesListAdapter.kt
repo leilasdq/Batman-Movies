@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.api.load
 import coil.size.Scale
 import coil.transform.RoundedCornersTransformation
-import com.example.batman_project.MoviesViewModel
+import com.example.batman_project.viewmodel.MoviesViewModel
 import com.example.batman_project.model.Search
 import com.example.batman_project.databinding.ListItemsBinding
 
