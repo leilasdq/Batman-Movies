@@ -11,4 +11,5 @@
     <string name="actors_txt">Actors:</string>
     <string name="director_txt">Director:</string>
     <string name="writers">Writers:</string>
+    <string name="nothing_found_here_check_your_connection_first">Nothing found here. \n Check your connection First</string>
 </resources>

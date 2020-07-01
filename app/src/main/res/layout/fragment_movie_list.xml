@@ -7,11 +7,21 @@
 
     </data>
 
-    <FrameLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".ui.MovieListFragment"
         android:background="@drawable/background">
+
+        <TextView
+            android:visibility="invisible"
+            android:textAlignment="center"
+            android:textSize="18sp"
+            android:id="@+id/nothing"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/nothing_found_here_check_your_connection_first"
+            android:layout_centerInParent="true"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/movies_recycle"
@@ -19,5 +29,5 @@
             android:layout_height="match_parent"
             tools:listitem="@layout/list_items" />
 
-    </FrameLayout>
+    </RelativeLayout>
 </layout>

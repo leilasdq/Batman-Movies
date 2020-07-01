@@ -40,20 +40,20 @@ object DatabaseRepository {
                 id = detailBox.getId(i)
             }
         }
-        liveData.value = detailBox.get(id)
+        if (id != -1L) liveData.value = detailBox.get(id)
         return liveData
     }
 
     fun putSpecificMovieDetail(detail: Detail) {
         val list = detailBox.all
+        if(list.size!=0) {
         for (i in list) {
-            if(list.size!=0) {
                 if (detail.imdbID != i.imdbID) {
                     detailBox.put(detail)
                 }
-            } else {
-                detailBox.put(detail)
             }
+        } else {
+            detailBox.put(detail)
         }
     }
 }

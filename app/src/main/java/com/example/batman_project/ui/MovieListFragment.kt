@@ -50,7 +50,13 @@ class MovieListFragment : Fragment() {
         })
 
         itemList.observe(viewLifecycleOwner, Observer {
-            mAdapter.submitList(it)
+            if (it.isEmpty()){
+                mBinding.nothing.visibility = View.VISIBLE
+            }
+            else {
+                mBinding.nothing.visibility = View.INVISIBLE
+                mAdapter.submitList(it)
+            }
         })
 
         mViewModel.search.observe(viewLifecycleOwner, Observer {
