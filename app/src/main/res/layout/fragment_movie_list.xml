@@ -23,10 +23,16 @@
             android:text="@string/nothing_found_here_check_your_connection_first"
             android:layout_centerInParent="true"/>
 
+        <com.daimajia.slider.library.SliderLayout
+            android:id="@+id/slider"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"/>
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/movies_recycle"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_below="@id/slider"
             tools:listitem="@layout/list_items" />
 
     </RelativeLayout>
