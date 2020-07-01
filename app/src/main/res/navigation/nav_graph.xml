@@ -24,6 +24,9 @@
             app:argType="string" />
         <action
             android:id="@+id/action_detailFragment_to_movieListFragment"
-            app:destination="@id/movieListFragment" />
+            app:destination="@id/movieListFragment"
+            app:launchSingleTop="false"
+            app:popUpTo="@+id/movieListFragment"
+            app:popUpToInclusive="false" />
     </fragment>
 </navigation>

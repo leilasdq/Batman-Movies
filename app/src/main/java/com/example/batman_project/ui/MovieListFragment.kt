@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -14,6 +15,7 @@ import com.example.batman_project.viewmodel.MoviesViewModel
 import com.example.batman_project.R
 import com.example.batman_project.adapter.MoviesListAdapter
 import com.example.batman_project.databinding.FragmentMovieListBinding
+import com.example.batman_project.model.Search
 
 
 /**
@@ -21,8 +23,8 @@ import com.example.batman_project.databinding.FragmentMovieListBinding
  */
 class MovieListFragment : Fragment() {
     private lateinit var mBinding: FragmentMovieListBinding
-    private lateinit var mViewModel: MoviesViewModel
     private lateinit var mAdapter: MoviesListAdapter
+    private val itemList = MediatorLiveData<List<Search>>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,15 +38,19 @@ class MovieListFragment : Fragment() {
         //(activity as MainActivity).supportActionBar?.setIcon(R.drawable.logo)
 
         val application = requireNotNull(value = this.activity).application
-        mViewModel = ViewModelProvider.AndroidViewModelFactory(application).create(
+        val mViewModel = ViewModelProvider.AndroidViewModelFactory(application).create(
             MoviesViewModel::class.java)
 
         mAdapter = MoviesListAdapter(mViewModel)
         mViewModel.getAllMovies().observe(viewLifecycleOwner, Observer {
             if(it!=null) {
-                mAdapter.submitList(it)
+                itemList.value = it
                 mViewModel.cacheItems(it)
             }
+        })
+
+        itemList.observe(viewLifecycleOwner, Observer {
+            mAdapter.submitList(it)
         })
 
         mViewModel.search.observe(viewLifecycleOwner, Observer {

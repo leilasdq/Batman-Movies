@@ -15,6 +15,7 @@ class MoviesViewModel: ViewModel() {
 
     init {
         onSearch.value = null
+        getAllMovies()
     }
 
     fun getAllMovies(): LiveData<List<Search>>{
