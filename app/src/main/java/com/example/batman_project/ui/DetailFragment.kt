@@ -41,6 +41,7 @@ class DetailFragment : Fragment() {
         mBinding.viewModel = mViewModel
 
         mViewModel.getSpecificMovie(args.imdbId).observe(viewLifecycleOwner, Observer {
+            (activity as MainActivity).supportActionBar?.title = it.Title
             mBinding.detail = it
             mData = it
             mBinding.movieBanner.load(it.Poster){
