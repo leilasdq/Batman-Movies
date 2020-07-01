@@ -38,14 +38,25 @@ class DetailFragment : Fragment() {
         var item: Detail? = null
         val args = DetailFragmentArgs.fromBundle(requireArguments())
 
-        val application = requireNotNull(value = this.activity).application
-        mViewModel = ViewModelProvider.AndroidViewModelFactory(application).create(
-            DetailViewModel::class.java
-        )
-        mBinding.viewModel = mViewModel
+        setupViewModel()
 
+        item = observers(args, item)
+        if (item == null){
+            mBinding.constraint.visibility = View.INVISIBLE
+            (activity as MainActivity).supportActionBar?.title = "Nothing is here"
+            mBinding.nothing.text = "Nothing found here\nCheck your connection First"
+        }
+
+        return mBinding.root
+    }
+
+    private fun observers(
+        args: DetailFragmentArgs,
+        item: Detail?
+    ): Detail? {
+        var item1 = item
         mViewModel.getSpecificMovie(args.imdbId).observe(viewLifecycleOwner, Observer {
-            item = it
+            item1 = it
             (activity as MainActivity).supportActionBar?.title = it.Title
             mBinding.nothing.visibility = View.INVISIBLE
             mBinding.constraint.visibility = View.VISIBLE
@@ -56,20 +67,6 @@ class DetailFragment : Fragment() {
                 crossfade(true)
                 scale(Scale.FIT)
                 transformations(RoundedCornersTransformation(1f))
-            }
-        })
-
-        if (item == null){
-            mBinding.constraint.visibility = View.INVISIBLE
-            (activity as MainActivity).supportActionBar?.title = "Nothing is here"
-            mBinding.nothing.text = "Nothing found here\nCheck your connection First"
-        }
-
-        mViewModel.play.observe(viewLifecycleOwner, Observer {
-            if (it) {
-                Snackbar.make(mBinding.root, "This is not available yet", Snackbar.LENGTH_LONG)
-                    .show()
-                mViewModel.onPlayFinished()
             }
         })
 
@@ -87,7 +84,23 @@ class DetailFragment : Fragment() {
             }
         })
 
-        return mBinding.root
+        mViewModel.play.observe(viewLifecycleOwner, Observer {
+            if (it) {
+                Snackbar.make(mBinding.root, "This is not available yet", Snackbar.LENGTH_LONG)
+                    .show()
+                mViewModel.onPlayFinished()
+            }
+        })
+
+        return item1
+    }
+
+    private fun setupViewModel() {
+        val application = requireNotNull(value = this.activity).application
+        mViewModel = ViewModelProvider.AndroidViewModelFactory(application).create(
+            DetailViewModel::class.java
+        )
+        mBinding.viewModel = mViewModel
     }
 
 }
