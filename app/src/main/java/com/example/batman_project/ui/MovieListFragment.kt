@@ -11,13 +11,15 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
-import com.daimajia.slider.library.SliderTypes.BaseSliderView
-import com.daimajia.slider.library.SliderTypes.TextSliderView
 import com.example.batman_project.R
 import com.example.batman_project.adapter.MoviesListAdapter
+import com.example.batman_project.adapter.SliderAdapterExample
 import com.example.batman_project.databinding.FragmentMovieListBinding
+import com.example.batman_project.model.ImageSliderModel
 import com.example.batman_project.model.Search
 import com.example.batman_project.viewmodel.MoviesViewModel
+import com.smarteist.autoimageslider.IndicatorView.animation.type.IndicatorAnimationType
+import com.smarteist.autoimageslider.SliderAnimations
 
 
 /**
@@ -27,8 +29,6 @@ class MovieListFragment : Fragment() {
     private lateinit var mBinding: FragmentMovieListBinding
     private lateinit var mAdapter: MoviesListAdapter
     private val itemList = MediatorLiveData<List<Search>>()
-    private val urlMap = HashMap<String, String>()
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -93,18 +93,17 @@ class MovieListFragment : Fragment() {
     }
 
     private fun addSlider(it: List<Search>) {
-        val random = listOf(it).random()
-        for (i in 0..5) {
-            urlMap[random[i].Title] = random[i].Poster
+        val random = it.shuffled()
+        val list = ArrayList<ImageSliderModel>()
+        for (i in 0..3) {
+            list.add(ImageSliderModel(image_link = random[i].Poster, img_txt = random[i].Title))
         }
-        for (name in urlMap.keys) {
-            val textSliderView = TextSliderView(activity)
-            // initialize a SliderLayout
-            textSliderView
-                .setScaleType(BaseSliderView.ScaleType.CenterInside)
-                .description(name)
-                .image(urlMap[name]).scaleType = BaseSliderView.ScaleType.Fit
-            mBinding.slider.addSlider(textSliderView)
+        val sliderAdapter = SliderAdapterExample(list)
+        mBinding.slider.setSliderAdapter(sliderAdapter)
+        mBinding.slider.apply {
+            startAutoCycle()
+            setIndicatorAnimation(IndicatorAnimationType.SWAP)
+            setSliderTransformAnimation(SliderAnimations.SIMPLETRANSFORMATION)
         }
     }
 

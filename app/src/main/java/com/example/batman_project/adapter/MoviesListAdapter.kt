@@ -42,11 +42,10 @@ class MoviesListAdapter(val vm: MoviesViewModel) : ListAdapter<Search, MoviesLis
         fun bind(search: Search, vm: MoviesViewModel){
             binding.search = search
             binding.viewModel = vm
-            binding.movieTxt.text = search.Title
             binding.movieImg.load(search.Poster) {
                 crossfade(false)
-                scale(Scale.FILL)
-                transformations(RoundedCornersTransformation(4f))
+                scale(Scale.FIT)
+                transformations(RoundedCornersTransformation(16f))
             }
         }
 

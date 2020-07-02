@@ -62,10 +62,11 @@ class DetailFragment : Fragment() {
             mBinding.constraint.visibility = View.VISIBLE
             mViewModel.putMovieToDatabase(it)
             mBinding.detail = it
+            mBinding.rating.rating = (it.imdbRating.toFloat())/2
             mData = it
             mBinding.movieBanner.load(it.Poster) {
                 crossfade(true)
-                scale(Scale.FIT)
+                size(500)
                 transformations(RoundedCornersTransformation(1f))
             }
         })
