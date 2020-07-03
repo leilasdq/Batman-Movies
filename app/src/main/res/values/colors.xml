@@ -6,4 +6,6 @@
     <color name="subText">#F8E478</color>
     <color name="lighterBackground">#373636</color>
     <color name="darkerBackground">#010F19</color>
+    <color name="titleBackgroundColor">#ccc</color>
+    <color name="subTitleBackgroundColor">#eee</color>
 </resources>

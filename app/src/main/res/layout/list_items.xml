@@ -4,61 +4,94 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="search"
             type="com.example.batman_project.model.Search" />
+
         <variable
             name="viewModel"
             type="com.example.batman_project.viewmodel.MoviesViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/lighterBackground"
-        android:layout_margin="16dp">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/lighterBackground"
+            android:layout_margin="16dp">
 
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:cardCornerRadius="8dp"
-            android:onClick="@{() -> viewModel.onItemClicked(search)}"
-            android:background="@android:color/transparent"
-            >
-
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:background="@color/lighterBackground">
+                app:cardCornerRadius="8dp"
+                android:onClick="@{() -> viewModel.onItemClicked(search)}"
+                android:background="@android:color/transparent"
+                >
 
-                <ImageView
-                    android:id="@+id/movie_img"
-                    tools:src="@drawable/ic_android_black_24dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toTopOf="@id/movie_txt"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintLeft_toLeftOf="parent" />
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:background="@color/lighterBackground">
 
-                <TextView
-                    android:id="@+id/movie_txt"
-                    tools:text="movie_name"
-                    android:textSize="16sp"
-                    android:textColor="#F3E4E4"
-                    android:textAlignment="center"
-                    app:layout_constraintTop_toBottomOf="@id/movie_img"
-                    app:layout_constraintRight_toRightOf="@id/movie_img"
-                    app:layout_constraintLeft_toLeftOf="@id/movie_img"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="4dp"/>
+<!--                    <TextView-->
+<!--                        android:layout_width="32dp"-->
+<!--                        android:layout_height="32dp"-->
+<!--                        android:background="@drawable/year_background"-->
+<!--                        tools:text="2010"-->
+<!--                        android:textColor="@color/darkerBackground"-->
+<!--                        android:text="@{search.year}"-->
+<!--                        app:layout_constraintBottom_toTopOf="@id/movie_img"-->
+<!--                        app:layout_constraintTop_toTopOf="parent"-->
+<!--                        app:layout_constraintLeft_toRightOf="@id/movie_img"-->
+<!--                        app:layout_constraintRight_toRightOf="parent"-->
+<!--                        -->
+<!--                        />-->
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                    <ImageView
+                        android:id="@+id/movie_img"
+                        tools:src="@drawable/ic_android_black_24dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="200dp"
+                        android:scaleType="center"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toTopOf="@id/movie_txt"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent" />
 
-        </androidx.cardview.widget.CardView>
+                    <TextView
+                        android:id="@+id/movie_txt"
+                        android:text="@{search.title}"
+                        tools:text="movie_name"
+                        android:textSize="18sp"
+                        android:textStyle="italic"
+                        android:textColor="@android:color/white"
+                        android:textAlignment="center"
+                        app:layout_constraintTop_toBottomOf="@id/movie_img"
+                        app:layout_constraintRight_toRightOf="@id/movie_img"
+                        app:layout_constraintLeft_toLeftOf="@id/movie_img"
+                        app:layout_constraintBottom_toTopOf="@id/movie_type"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+                    <TextView
+                        android:id="@+id/movie_type"
+                        android:text="@{search.type}"
+                        tools:text="movie_name"
+                        android:textSize="16sp"
+                        android:textColor="#F3E4E4"
+                        android:textAlignment="center"
+                        app:layout_constraintTop_toBottomOf="@id/movie_txt"
+                        app:layout_constraintRight_toRightOf="@id/movie_img"
+                        app:layout_constraintLeft_toLeftOf="@id/movie_img"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="4dp"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

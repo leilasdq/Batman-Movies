@@ -45,9 +45,11 @@
                 tools:context=".ui.DetailFragment">
 
                 <com.github.siyamed.shapeimageview.mask.PorterShapeImageView
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitXY"
                     android:id="@+id/movie_banner"
                     android:layout_width="match_parent"
-                    android:layout_height="220dp"
+                    android:layout_height="0dp"
                     android:layout_margin="4dp"
                     android:layout_weight="1"
                     android:elevation="5dp"
@@ -68,17 +70,17 @@
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/movie_banner" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/imdb_bachground"
-                    android:text="@{detail.imdbRating}"
-                    android:textAlignment="center"
-                    android:textColor="@android:color/black"
-                    android:textSize="16dp"
-                    app:layout_constraintLeft_toLeftOf="@id/country"
-                    app:layout_constraintRight_toRightOf="@id/country"
-                    app:layout_constraintTop_toBottomOf="@id/play_btn" />
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:background="@drawable/imdb_bachground"-->
+<!--                    android:text="@{detail.imdbRating}"-->
+<!--                    android:textAlignment="center"-->
+<!--                    android:textColor="@android:color/black"-->
+<!--                    android:textSize="16dp"-->
+<!--                    app:layout_constraintLeft_toLeftOf="@id/country"-->
+<!--                    app:layout_constraintRight_toRightOf="@id/country"-->
+<!--                    app:layout_constraintTop_toBottomOf="@id/play_btn" />-->
 
                 <ImageButton
                     android:id="@+id/share_btn"
@@ -92,10 +94,18 @@
                     app:layout_constraintTop_toBottomOf="@id/play_btn" />
 
                 <TextView
+                    android:paddingRight="8dp"
+                    android:paddingLeft="8dp"
+                    tools:text="sfgsgsfgsafda"
+                    android:background="@drawable/back"
                     android:id="@+id/movie_name"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
                     android:text="@{detail.title}"
                     android:textColor="@color/colorAccent"
                     android:textSize="18sp"
@@ -110,12 +120,24 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:text="@{detail.genre}"
-                    android:textAlignment="center"
+                    android:textAlignment="textStart"
                     android:textColor="@color/subText"
                     android:textSize="16sp"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintLeft_toLeftOf="@id/movie_name"
                     app:layout_constraintTop_toBottomOf="@id/movie_name" />
+
+                <RatingBar
+                    android:id="@+id/rating"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    app:layout_constraintLeft_toLeftOf="@id/movie_name"
+                    app:layout_constraintTop_toBottomOf="@id/movie_genre"
+                    style="?android:attr/ratingBarStyleIndicator"
+                    android:numStars="5"
+                    android:stepSize="0.1"
+                    android:isIndicator="true"/>
 
                 <TextView
                     android:id="@+id/country"
@@ -128,7 +150,7 @@
                     android:textSize="16sp"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toLeftOf="@id/length"
-                    app:layout_constraintTop_toBottomOf="@id/movie_genre"
+                    app:layout_constraintTop_toBottomOf="@id/rating"
                     app:layout_constraintVertical_chainStyle="spread" />
 
                 <TextView
@@ -142,7 +164,7 @@
                     android:textSize="16sp"
                     app:layout_constraintLeft_toRightOf="@id/country"
                     app:layout_constraintRight_toLeftOf="@id/year"
-                    app:layout_constraintTop_toBottomOf="@id/movie_genre" />
+                    app:layout_constraintTop_toBottomOf="@id/rating" />
 
                 <TextView
                     android:id="@+id/year"
@@ -155,7 +177,7 @@
                     android:textSize="16sp"
                     app:layout_constraintLeft_toRightOf="@id/length"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/movie_genre" />
+                    app:layout_constraintTop_toBottomOf="@id/rating" />
 
                 <TextView
                     android:id="@+id/movie_country"
@@ -164,7 +186,7 @@
                     android:layout_margin="16dp"
                     android:text="@{detail.country}"
                     android:textAlignment="center"
-                    android:textColor="@color/colorAccent"
+                    android:textColor="@color/subTitleBackgroundColor"
                     android:textSize="16sp"
                     android:textStyle="bold"
                     app:layout_constraintLeft_toLeftOf="parent"
@@ -180,7 +202,7 @@
                     android:layout_margin="16dp"
                     android:text="@{detail.runtime}"
                     android:textAlignment="center"
-                    android:textColor="@color/colorAccent"
+                    android:textColor="@color/subTitleBackgroundColor"
                     android:textSize="16sp"
                     android:textStyle="bold"
                     app:layout_constraintLeft_toRightOf="@id/movie_country"
@@ -196,7 +218,7 @@
                     android:layout_margin="16dp"
                     android:text="@{detail.released}"
                     android:textAlignment="center"
-                    android:textColor="@color/colorAccent"
+                    android:textColor="@color/subTitleBackgroundColor"
                     android:textSize="16sp"
                     android:textStyle="bold"
                     app:layout_constraintLeft_toRightOf="@id/movie_length"
@@ -223,7 +245,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
                     android:text="@{detail.plot}"
-                    android:textColor="@color/subText"
+                    android:textColor="@color/titleBackgroundColor"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/plat_txt" />
@@ -247,7 +269,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
                     android:text="@{detail.actors}"
-                    android:textColor="@color/subText"
+                    android:textColor="@color/titleBackgroundColor"
                     app:layout_constraintTop_toBottomOf="@id/actor_txt" />
 
                 <TextView
@@ -269,7 +291,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
                     android:text="@{detail.director}"
-                    android:textColor="@color/subText"
+                    android:textColor="@color/titleBackgroundColor"
                     app:layout_constraintTop_toBottomOf="@id/director_txt" />
 
                 <TextView
@@ -291,7 +313,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
                     android:text="@{detail.writer}"
-                    android:textColor="@color/subText"
+                    android:textColor="@color/titleBackgroundColor"
                     app:layout_constraintTop_toBottomOf="@id/writer_txt" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
