@@ -70,18 +70,6 @@
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/movie_banner" />
 
-<!--                <TextView-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:background="@drawable/imdb_bachground"-->
-<!--                    android:text="@{detail.imdbRating}"-->
-<!--                    android:textAlignment="center"-->
-<!--                    android:textColor="@android:color/black"-->
-<!--                    android:textSize="16dp"-->
-<!--                    app:layout_constraintLeft_toLeftOf="@id/country"-->
-<!--                    app:layout_constraintRight_toRightOf="@id/country"-->
-<!--                    app:layout_constraintTop_toBottomOf="@id/play_btn" />-->
-
                 <ImageButton
                     android:id="@+id/share_btn"
                     android:layout_width="wrap_content"
@@ -96,7 +84,7 @@
                 <TextView
                     android:paddingRight="8dp"
                     android:paddingLeft="8dp"
-                    tools:text="sfgsgsfgsafda"
+                    tools:text="Movie Title"
                     android:background="@drawable/back"
                     android:id="@+id/movie_name"
                     android:layout_width="match_parent"
@@ -143,11 +131,8 @@
                     android:id="@+id/country"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_margin="16dp"
                     android:text="@string/country_txt"
-                    android:textAlignment="center"
-                    android:textColor="@color/subText"
-                    android:textSize="16sp"
+                    style="@style/DetailSubTitle"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toLeftOf="@id/length"
                     app:layout_constraintTop_toBottomOf="@id/rating"
@@ -157,11 +142,8 @@
                     android:id="@+id/length"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_margin="16dp"
+                    style="@style/DetailSubTitle"
                     android:text="@string/length_txt"
-                    android:textAlignment="center"
-                    android:textColor="@color/subText"
-                    android:textSize="16sp"
                     app:layout_constraintLeft_toRightOf="@id/country"
                     app:layout_constraintRight_toLeftOf="@id/year"
                     app:layout_constraintTop_toBottomOf="@id/rating" />
@@ -170,11 +152,8 @@
                     android:id="@+id/year"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_margin="16dp"
+                    style="@style/DetailSubTitle"
                     android:text="@string/year_txt"
-                    android:textAlignment="center"
-                    android:textColor="@color/subText"
-                    android:textSize="16sp"
                     app:layout_constraintLeft_toRightOf="@id/length"
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/rating" />
@@ -183,12 +162,8 @@
                     android:id="@+id/movie_country"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_margin="16dp"
                     android:text="@{detail.country}"
-                    android:textAlignment="center"
-                    android:textColor="@color/subTitleBackgroundColor"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
+                    style="@style/DetailSubTitleValues"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toLeftOf="@id/movie_length"
                     app:layout_constraintTop_toBottomOf="@id/year"
@@ -199,12 +174,8 @@
                     android:id="@+id/movie_length"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_margin="16dp"
                     android:text="@{detail.runtime}"
-                    android:textAlignment="center"
-                    android:textColor="@color/subTitleBackgroundColor"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
+                    style="@style/DetailSubTitleValues"
                     app:layout_constraintLeft_toRightOf="@id/movie_country"
                     app:layout_constraintRight_toLeftOf="@id/movie_year"
                     app:layout_constraintTop_toBottomOf="@id/year"
@@ -215,12 +186,8 @@
                     android:id="@+id/movie_year"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_margin="16dp"
                     android:text="@{detail.released}"
-                    android:textAlignment="center"
-                    android:textColor="@color/subTitleBackgroundColor"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
+                    style="@style/DetailSubTitleValues"
                     app:layout_constraintLeft_toRightOf="@id/movie_length"
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/year"
@@ -230,12 +197,9 @@
                     android:id="@+id/plat_txt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="8dp"
                     android:layout_marginTop="32dp"
                     android:text="@string/plot_tct"
-                    android:textColor="@color/colorAccent"
-                    android:textSize="18sp"
-                    android:textStyle="bold|italic"
+                    style="@style/DetailTitle"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/movie_country" />
 
@@ -243,9 +207,8 @@
                     android:id="@+id/plato"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="8dp"
+                    style="@style/DetailTitleValues"
                     android:text="@{detail.plot}"
-                    android:textColor="@color/titleBackgroundColor"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/plat_txt" />
@@ -254,12 +217,8 @@
                     android:id="@+id/actor_txt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginTop="16dp"
                     android:text="@string/actors_txt"
-                    android:textColor="@color/colorAccent"
-                    android:textSize="18sp"
-                    android:textStyle="bold|italic"
+                    style="@style/DetailTitle"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/plato" />
 
@@ -267,21 +226,16 @@
                     android:id="@+id/actors"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="8dp"
                     android:text="@{detail.actors}"
-                    android:textColor="@color/titleBackgroundColor"
+                    style="@style/DetailTitleValues"
                     app:layout_constraintTop_toBottomOf="@id/actor_txt" />
 
                 <TextView
                     android:id="@+id/director_txt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginTop="16dp"
                     android:text="@string/director_txt"
-                    android:textColor="@color/colorAccent"
-                    android:textSize="18sp"
-                    android:textStyle="bold|italic"
+                    style="@style/DetailTitle"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/actors" />
 
@@ -289,21 +243,16 @@
                     android:id="@+id/director"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="8dp"
+                    style="@style/DetailTitleValues"
                     android:text="@{detail.director}"
-                    android:textColor="@color/titleBackgroundColor"
                     app:layout_constraintTop_toBottomOf="@id/director_txt" />
 
                 <TextView
                     android:id="@+id/writer_txt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginTop="16dp"
+                    style="@style/DetailTitle"
                     android:text="@string/writers"
-                    android:textColor="@color/colorAccent"
-                    android:textSize="18sp"
-                    android:textStyle="bold|italic"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/director" />
 
@@ -311,9 +260,9 @@
                     android:id="@+id/writer"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="8dp"
+                    style="@style/DetailTitleValues"
+                    android:paddingBottom="8dp"
                     android:text="@{detail.writer}"
-                    android:textColor="@color/titleBackgroundColor"
                     app:layout_constraintTop_toBottomOf="@id/writer_txt" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>

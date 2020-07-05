@@ -34,20 +34,6 @@
                     android:orientation="vertical"
                     android:background="@color/lighterBackground">
 
-<!--                    <TextView-->
-<!--                        android:layout_width="32dp"-->
-<!--                        android:layout_height="32dp"-->
-<!--                        android:background="@drawable/year_background"-->
-<!--                        tools:text="2010"-->
-<!--                        android:textColor="@color/darkerBackground"-->
-<!--                        android:text="@{search.year}"-->
-<!--                        app:layout_constraintBottom_toTopOf="@id/movie_img"-->
-<!--                        app:layout_constraintTop_toTopOf="parent"-->
-<!--                        app:layout_constraintLeft_toRightOf="@id/movie_img"-->
-<!--                        app:layout_constraintRight_toRightOf="parent"-->
-<!--                        -->
-<!--                        />-->
-
                     <ImageView
                         android:id="@+id/movie_img"
                         tools:src="@drawable/ic_android_black_24dp"

@@ -15,7 +15,6 @@ class MoviesViewModel: ViewModel() {
 
     init {
         onSearch.value = null
-        getAllMovies()
     }
 
     fun getAllMovies(): LiveData<List<Search>>{
@@ -36,7 +35,7 @@ class MoviesViewModel: ViewModel() {
         getAllMovies()
     }
 
-    fun getFromDatabase(): MutableLiveData<List<Search>> {
+    private fun getFromDatabase(): MutableLiveData<List<Search>> {
         return DatabaseRepository.getAllMovies()
     }
 

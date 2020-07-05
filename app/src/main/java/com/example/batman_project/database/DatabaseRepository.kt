@@ -23,7 +23,20 @@ object DatabaseRepository {
     }
 
     fun saveToMovieDatabase(list: List<Search>) {
-        movieBox.put(list)
+//        val all = movieBox.all
+//        if (all.size!=0) {
+//            val addingList: MutableList<Search> = list as MutableList<Search>
+//            for (i in all) {
+//                for (j in 0 until all.size) {
+//                    if (i.imdbID == list[j].imdbID) {
+//                        addingList.remove(list[j])
+//                        break
+//                    }
+//                }
+//            }
+//            movieBox.put(addingList)
+//        } else {
+            movieBox.put(list)
     }
 
     fun removeAllMovies() {
